@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#14263d" />
+  <meta name="description" content="D Global Collective brings industry, academia, startups and learners together through applied projects, founder engagement, innovation challenges and experiential learning." />
+  <title>D Global Collective | Industry. Academia. Innovation.</title>
+  <style>
+    :root{
+      --ink:#123b3b; --ink-2:#174b4b; --teal:#087f8c; --mint:#e5f4f4;
+      --lime:#d8eeee; --paper:#ffffff; --white:#fff; --muted:#647779;
+      --line:rgba(18,59,59,.13); --orange:#39aeb5; --shadow:0 24px 70px rgba(18,59,59,.10);
+      --radius:24px; --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+    .announcement{background:#dff2f2;color:var(--ink);text-align:center;padding:9px 16px;font-size:.78rem;font-weight:750;letter-spacing:.06em}
+    header{position:sticky;top:0;z-index:20;background:rgba(247,247,241,.91);backdrop-filter:blur(16px);border-bottom:1px solid rgba(16,44,43,.08)}
+    .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:-.04em;font-size:1.12rem}
+    .brand-mark{width:42px;height:42px;border-radius:14px;background:var(--ink);color:#dff2f2;display:grid;place-items:center;font-weight:900;font-size:1.02rem;letter-spacing:-.08em}
+    .brand small{display:block;font-size:.61rem;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-top:-2px}
+    .nav-links{display:flex;align-items:center;gap:26px;font-size:.88rem;font-weight:650;color:#3e5551}
+    .nav-links a:hover{color:var(--teal)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:13px 19px;font-weight:800;font-size:.88rem;cursor:pointer;transition:transform .2s,background .2s}
+    .nav-cta,.btn-primary{background:var(--ink);color:white}
+    .nav-cta:hover,.btn-primary:hover{background:var(--teal);transform:translateY(-2px)}
+    .btn-light{background:white;color:var(--ink);border:1px solid var(--line)}
+    .btn-light:hover{transform:translateY(-2px);border-color:var(--teal)}
+    .menu-toggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--ink);cursor:pointer}
+    .hero{padding:78px 0 66px;overflow:hidden;position:relative}
+    .hero:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:var(--mint);right:-170px;top:-190px;z-index:-1}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:54px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:850;color:var(--teal)}
+    .eyebrow:before{content:"";width:25px;height:2px;background:var(--orange)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(3.2rem,6vw,5.8rem);line-height:.99;letter-spacing:-.075em;margin:21px 0 24px;max-width:700px}
+    h1 em{font-style:normal;color:var(--teal)}
+    .hero-copy{font-size:1.13rem;line-height:1.75;color:#50645f;max-width:560px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 28px}
+    .micro-proof{display:flex;align-items:center;gap:12px;color:#52645f;font-size:.82rem}
+    .avatars{display:flex}
+    .avatar{width:29px;height:29px;border-radius:50%;border:2px solid var(--paper);margin-left:-7px;display:grid;place-items:center;font-size:.67rem;font-weight:900;background:#d7e8dd}
+    .avatar:first-child{margin-left:0;background:#dce7b4}.avatar:nth-child(2){background:#f5d5bd}.avatar:nth-child(3){background:#b9d9d3}
+    .hero-visual{min-height:490px;position:relative}
+    .visual-main{position:absolute;inset:8px 22px 28px 34px;border-radius:34px;overflow:hidden;background:linear-gradient(145deg,#087f8c,#123b3b);box-shadow:var(--shadow);color:white;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+    .visual-main:before,.visual-main:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.28);border-radius:50%;width:420px;height:420px;right:-170px;top:-105px}
+    .visual-main:after{width:300px;height:300px;right:-110px;top:-45px}
+    .visual-top,.visual-bottom{position:relative;z-index:1}
+    .visual-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#c6d9d0;font-weight:800}
+    .visual-main h2{font-size:2.4rem;line-height:1.08;letter-spacing:-.06em;max-width:330px;margin:14px 0}
+    .visual-main p{color:#c3d4cd;max-width:290px;font-size:.92rem}
+    .orbit{height:185px;width:185px;position:absolute;right:15px;bottom:84px;border:1px solid rgba(255,255,255,.45);border-radius:50%;display:grid;place-items:center;z-index:1}
+    .orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed rgba(255,255,255,.35);border-radius:50%;inset:19px}
+    .orbit:after{inset:42px}
+    .orbit-center{width:68px;height:68px;border-radius:22px;background:#dff2f2;color:var(--ink);display:grid;place-items:center;font-weight:950;letter-spacing:-.08em;font-size:1.2rem}
+    .orbit-dot{position:absolute;width:12px;height:12px;background:var(--orange);border:3px solid #1d4d48;border-radius:50%;top:17px;left:38px}
+    .floating-card{position:absolute;z-index:3;background:white;box-shadow:0 18px 45px rgba(16,44,43,.16);border:1px solid rgba(16,44,43,.08);border-radius:18px;padding:16px 18px}
+    .float-one{left:0;bottom:4px;max-width:220px}.float-two{right:0;top:45px;max-width:178px}
+    .float-title{font-size:.73rem;color:var(--muted);font-weight:750}.float-value{font-size:1.04rem;font-weight:900;letter-spacing:-.03em;margin-top:3px}
+    .float-icon{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:10px;background:var(--mint);margin-bottom:9px;font-size:1rem}
+    .section{padding:96px 0}
+    .section-white{background:white}
+    .section-dark{background:var(--ink);color:white}
+    .section-head{max-width:720px;margin-bottom:44px}
+    .section-head h2{font-size:clamp(2.2rem,4vw,3.6rem);line-height:1.06;letter-spacing:-.065em;margin:16px 0}
+    .section-head p{color:var(--muted);font-size:1.04rem;max-width:650px}
+    .section-dark .section-head p{color:#b6c8c0}
+    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .pillar{padding:27px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.55);min-height:260px;transition:transform .2s,box-shadow .2s}
+    .pillar:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .pillar-icon{width:48px;height:48px;border-radius:15px;background:var(--mint);display:grid;place-items:center;font-size:1.35rem;margin-bottom:26px}
+    .pillar h3{font-size:1.28rem;letter-spacing:-.04em;margin-bottom:10px}
+    .pillar p{color:var(--muted);font-size:.93rem;margin-bottom:0}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#e5f4f4;color:#087f8c;font-size:.68rem;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+    .two-col{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+    .big-quote{font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.2;letter-spacing:-.055em;font-weight:750}
+    .big-quote span{color:var(--teal)}
+    .check-list{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:17px}
+    .check-list li{display:flex;gap:12px;align-items:flex-start;color:#4e625d}
+    .check{flex:0 0 24px;height:24px;border-radius:50%;background:var(--mint);display:grid;place-items:center;color:var(--teal);font-size:.78rem;font-weight:900}
+    .audience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .audience{padding:23px 20px;border-radius:18px;background:#f5fbfb;border:1px solid rgba(16,44,43,.08)}
+    .audience .num{font-size:.72rem;color:var(--teal);font-weight:900;letter-spacing:.1em}
+    .audience h3{font-size:1.05rem;margin:14px 0 8px;letter-spacing:-.03em}
+    .audience p{font-size:.85rem;color:var(--muted);margin:0}
+    .program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .program{border-radius:24px;overflow:hidden;background:#173b38;border:1px solid rgba(255,255,255,.12);min-height:330px;display:flex;flex-direction:column}
+    .program-art{height:142px;position:relative;overflow:hidden;background:linear-gradient(135deg,#159ba4,#174b4b)}
+    .program:nth-child(2) .program-art{background:linear-gradient(135deg,#8bcfd0,#287a7c)}
+    .program:nth-child(3) .program-art{background:linear-gradient(135deg,#69b9bd,#087f8c)}
+    .program-art:before,.program-art:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(255,255,255,.4);border-radius:50%;top:-72px;right:25px}
+    .program-art:after{width:120px;height:120px;top:-42px;right:55px}
+    .art-symbol{position:absolute;right:38px;bottom:15px;font-size:3.5rem;opacity:.9}
+    .program-body{padding:23px;display:flex;flex-direction:column;flex:1}
+    .program-body .tag{background:rgba(214,239,133,.14);color:#dff2f2;align-self:flex-start}
+    .program h3{font-size:1.35rem;letter-spacing:-.04em;margin-bottom:10px}
+    .program p{color:#bed0c8;font-size:.9rem;margin-bottom:22px}
+    .program a{margin-top:auto;color:#dff2f2;font-size:.86rem;font-weight:800}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:42px}
+    .step{padding:0 24px 0 0;position:relative}
+    .step:not(:last-child):after{content:"";height:1px;background:var(--line);position:absolute;top:23px;left:58px;right:16px}
+    .step-no{width:46px;height:46px;border-radius:50%;background:#dff2f2;color:var(--ink);display:grid;place-items:center;font-weight:950;position:relative;z-index:1;margin-bottom:22px}
+    .step h3{font-size:1.1rem;letter-spacing:-.03em;margin-bottom:9px}
+    .step p{font-size:.89rem;color:#b6c8c0}
+    .feature-band{padding:30px;border-radius:28px;background:var(--mint);display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    .feature-band h2{font-size:clamp(2rem,3.5vw,3rem);line-height:1.08;letter-spacing:-.06em;margin:10px 0 14px}
+    .feature-band p{color:#526761;max-width:570px}
+    .feature-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .stat{background:rgba(255,255,255,.7);padding:19px;border-radius:17px}
+    .stat strong{font-size:1.45rem;letter-spacing:-.05em;display:block}
+    .stat span{font-size:.8rem;color:var(--muted)}
+    .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:start}
+    .contact-copy h2{font-size:clamp(2.5rem,4vw,4rem);line-height:1;letter-spacing:-.07em;margin:17px 0}
+    .contact-copy p{color:#b6c8c0;max-width:430px}
+    .contact-detail{display:flex;gap:12px;align-items:center;color:#d7e5df;font-size:.9rem;margin-top:20px}
+    .contact-detail span{width:35px;height:35px;border-radius:11px;background:rgba(255,255,255,.1);display:grid;place-items:center}
+    form{background:white;color:var(--ink);padding:30px;border-radius:24px;box-shadow:var(--shadow)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{margin-bottom:16px}
+    label{display:block;font-size:.78rem;font-weight:800;margin-bottom:7px}
+    input,select,textarea{width:100%;padding:13px 14px;border:1px solid #dce4df;border-radius:12px;background:#fbfcf9;color:var(--ink);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(47,119,112,.12)}
+    textarea{resize:vertical;min-height:112px}
+    .form-note{font-size:.75rem;color:var(--muted);margin:12px 0 0}
+    .form-success{display:none;margin-top:14px;background:var(--mint);padding:13px;border-radius:12px;font-size:.88rem}
+    footer{background:#103536;color:#c5d9d9;padding:28px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-brand{color:white;font-weight:850}
+    .footer-links{display:flex;gap:20px;font-size:.82rem}
+    .copyright{font-size:.76rem}
+    .back-top{position:fixed;right:20px;bottom:20px;width:44px;height:44px;border:0;border-radius:50%;background:#dff2f2;color:var(--ink);font-size:1.2rem;box-shadow:0 8px 24px rgba(0,0,0,.12);cursor:pointer;display:none;z-index:10}
+    @media(max-width:900px){
+      .nav-links{gap:15px}.hero-grid{gap:24px}.hero-visual{min-height:430px}.visual-main{inset:8px 12px 25px 25px}.float-two{right:-2px}
+      .two-col,.contact-grid{grid-template-columns:1fr;gap:32px}.audience-grid{grid-template-columns:repeat(2,1fr)}
+      .feature-band{grid-template-columns:1fr}.program-grid{grid-template-columns:1fr 1fr}.program:last-child{grid-column:span 2}
+    }
+    @media(max-width:650px){
+      .container{width:min(var(--max),calc(100% - 30px))}.announcement{font-size:.67rem}.nav{min-height:70px}.menu-toggle{display:block}.nav-cta{display:none}
+      .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--paper);padding:20px 24px 24px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}
+      .nav-links.open{display:flex}.hero{padding:54px 0 45px}.hero-grid{grid-template-columns:1fr}.hero-visual{min-height:405px;margin-top:10px}
+      .visual-main{inset:5px 12px 25px 17px;padding:23px}.visual-main h2{font-size:2rem}.orbit{transform:scale(.8);transform-origin:bottom right;right:0;bottom:75px}
+      .float-one{left:0;bottom:0}.float-two{top:25px;right:0}.section{padding:68px 0}.pillars,.program-grid{grid-template-columns:1fr}.program:last-child{grid-column:auto}
+      .process{grid-template-columns:1fr 1fr;gap:25px}.step:not(:last-child):after{display:none}.feature-band{padding:23px}.form-row{grid-template-columns:1fr;gap:0}
+      form{padding:22px}.footer-inner{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}
+      h1{font-size:clamp(3.05rem,14vw,4.2rem)}
+    }
+
+    /* Premium corporate palette: midnight navy, ivory and restrained antique gold */
+    :root{
+      --ink:#14263d; --ink-2:#203c5a; --teal:#285f83; --mint:#edf1f5;
+      --lime:#e8edf2; --paper:#fbfaf7; --white:#fff; --muted:#657384;
+      --line:rgba(20,38,61,.14); --orange:#c49a4a; --shadow:0 24px 70px rgba(20,38,61,.11);
+    }
+    body{background:var(--paper);color:var(--ink)}
+    .announcement{background:#14263d;color:#f6f1e7}
+    header{background:rgba(251,250,247,.94);border-bottom-color:rgba(20,38,61,.10)}
+    .brand-mark{background:#14263d;color:#e8c982}
+    .nav-links{color:#46576a}
+    .nav-links a:hover{color:#285f83}
+    .nav-cta,.btn-primary{background:#14263d;color:#fff}
+    .nav-cta:hover,.btn-primary:hover{background:#285f83}
+    .btn-light:hover{border-color:#c49a4a}
+    .hero:before{background:#edf1f5}
+    .eyebrow{color:#285f83}
+    .eyebrow:before{background:#c49a4a}
+    h1 em,.big-quote span{color:#285f83}
+    .visual-main{background:linear-gradient(145deg,#285f83,#14263d)}
+    .visual-label{color:#e5eaf0}
+    .orbit-center{background:#f1dfb5;color:#14263d}
+    .orbit-dot{background:#c49a4a;border-color:#203c5a}
+    .float-icon,.pillar-icon,.check{background:#edf1f5}
+    .tag{background:#edf1f5;color:#285f83}
+    .audience{background:#fff;border-color:rgba(20,38,61,.10)}
+    .audience .num{color:#285f83}
+    .program{background:#14263d}
+    .program-art{background:linear-gradient(135deg,#c49a4a,#285f83)}
+    .program:nth-child(2) .program-art{background:linear-gradient(135deg,#d9c08c,#8c9cac)}
+    .program:nth-child(3) .program-art{background:linear-gradient(135deg,#6c8ca5,#203c5a)}
+    .program-body .tag{background:rgba(196,154,74,.18);color:#f1dfb5}
+    .program a{color:#f1dfb5}
+    .section-dark{background:#14263d}
+    .feature-band{background:#edf1f5}
+    .stat{background:rgba(255,255,255,.82)}
+    input:focus,select:focus,textarea:focus{border-color:#285f83;box-shadow:0 0 0 3px rgba(40,95,131,.12)}
+    .form-success{background:#edf1f5}
+    footer{background:#0e1c2e;color:#d4dce5}
+    .back-top{background:#f1dfb5;color:#14263d}
+    .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .detail-card{padding:24px;border:1px solid var(--line);border-radius:20px;background:#fff;min-height:210px}
+    .detail-card .detail-no{font-size:.72rem;font-weight:900;letter-spacing:.13em;color:#a27b34}
+    .detail-card h3{font-size:1.12rem;letter-spacing:-.03em;margin:13px 0 9px}
+    .detail-card p{font-size:.9rem;color:var(--muted);margin:0}
+    .outcome-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+    .outcome{display:flex;gap:13px;padding:18px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+    .outcome-mark{flex:0 0 34px;height:34px;border-radius:11px;display:grid;place-items:center;background:rgba(196,154,74,.18);color:#f1dfb5;font-weight:900}
+    .outcome strong{display:block;margin-bottom:4px}
+    .outcome span{font-size:.86rem;color:#c5d0dc}
+    .collab-note{margin-top:24px;padding:18px 20px;border-left:3px solid #c49a4a;background:#f4f1e9;color:#4e5e70;border-radius:0 14px 14px 0;font-size:.9rem}
+    @media(max-width:900px){.detail-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:650px){.detail-grid,.outcome-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="announcement">CONNECTING IDEAS TO INDUSTRY. TURNING COLLABORATION INTO ACTION.</div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="D Global Collective home">
+        <span class="brand-mark">DGC</span>
+        <span>D GLOBAL COLLECTIVE<small>Industry · Academia · Innovation</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#focus">What we do</a><a href="#collaboration-pathways">Collaboration</a><a href="#programs">Programs</a><a href="#approach">Our approach</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Start a collaboration <span>↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">A collaboration ecosystem</span>
+          <h1>Where industry meets <em>possibility.</em></h1>
+          <p class="hero-copy">We bring startups, industry practitioners and academic institutions together to explore real-world challenges, exchange knowledge and create meaningful opportunities for innovation and applied learning.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Explore a partnership <span>↗</span></a>
+            <a class="btn btn-light" href="#focus">Discover our focus <span>↓</span></a>
+          </div>
+          <div class="micro-proof">
+            <div class="avatars" aria-hidden="true"><span class="avatar">I</span><span class="avatar">A</span><span class="avatar">S</span></div>
+            <span>One ecosystem. Multiple perspectives. Shared progress.</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Illustration of an interconnected collaboration ecosystem">
+          <div class="visual-main">
+            <div class="visual-top">
+              <div class="visual-label">The collective advantage</div>
+              <h2>Better connections.<br/>Bolder outcomes.</h2>
+              <p>Bringing people, knowledge and real-world challenges into the same conversation.</p>
+            </div>
+            <div class="orbit"><span class="orbit-dot"></span><div class="orbit-center">DGC</div></div>
+            <div class="visual-bottom"><div class="visual-label">Industry × Academia × Innovation</div></div>
+          </div>
+          <div class="floating-card float-two"><span class="float-icon">↗</span><div class="float-title">From conversations</div><div class="float-value">to collaboration</div></div>
+          <div class="floating-card float-one"><span class="float-icon">◎</span><div class="float-title">Our focus</div><div class="float-value">Real-world impact</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="about">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow">Why D Global Collective</span>
+          <p class="big-quote">The most meaningful innovation happens when <span>different worlds work together.</span></p>
+        </div>
+        <div>
+          <p style="font-size:1.08rem;color:#50645f">D Global Collective is being built as a practical bridge between the people developing ideas, the organisations facing real challenges and the institutions preparing future talent.</p>
+          <p style="color:#667774">We create space for useful conversations and help turn them into structured engagement: expert interactions, applied projects, innovation challenges, technology demonstrations and experiential learning opportunities.</p>
+          <ul class="check-list">
+            <li><span class="check">✓</span><span><strong>Practical, not performative.</strong><br/>Start with a real need and work toward a useful outcome.</span></li>
+            <li><span class="check">✓</span><span><strong>Collaborative by design.</strong><br/>Bring the right mix of founders, practitioners, faculty and learners together.</span></li>
+            <li><span class="check">✓</span><span><strong>Built to evolve.</strong><br/>Begin with a focused pilot and grow what proves valuable.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="focus">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we do</span>
+          <h2>Turning shared interests into practical collaboration.</h2>
+          <p>We help partners move from introductions and ideas to well-scoped activities that encourage learning, experimentation and stronger connections.</p>
+        </div>
+        <div class="pillars">
+          <article class="pillar"><div class="pillar-icon">⌘</div><span class="tag">01 · Connect</span><h3>Industry–Academia Connect</h3><p>Facilitate meaningful engagement among colleges, faculty, students, industry experts and organisations around relevant challenges and opportunities.</p></article>
+          <article class="pillar"><div class="pillar-icon">✳</div><span class="tag">02 · Explore</span><h3>Startup & Innovation Engagement</h3><p>Create opportunities for founders to share their work, explore use cases, engage with talent and participate in curated industry conversations.</p></article>
+          <article class="pillar"><div class="pillar-icon">↗</div><span class="tag">03 · Apply</span><h3>Applied Learning & Experiences</h3><p>Shape real-world projects, technology demonstrations, innovation challenges and immersive learning experiences around partner needs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="collaboration-pathways">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Collaboration pathways</span>
+          <h2>Clear formats for turning a conversation into action.</h2>
+          <p>Every engagement starts with a defined objective. We help partners choose a practical format, bring the right participants together and agree on what a useful outcome would look like.</p>
+        </div>
+        <div class="detail-grid">
+          <article class="detail-card"><div class="detail-no">PATHWAY 01</div><h3>Industry problem statements</h3><p>Translate operational, technology or business questions into scoped challenges that can be explored with faculty, learners, startups or practitioner groups.</p></article>
+          <article class="detail-card"><div class="detail-no">PATHWAY 02</div><h3>Applied student projects</h3><p>Structure project briefs, expert reviews and milestone discussions so academic work can engage with practical constraints and real use cases.</p></article>
+          <article class="detail-card"><div class="detail-no">PATHWAY 03</div><h3>Founder & expert sessions</h3><p>Host focused talks, roundtables and founder circles that share lessons from building products, solving customer problems and navigating growth.</p></article>
+          <article class="detail-card"><div class="detail-no">PATHWAY 04</div><h3>Startup solution showcases</h3><p>Create curated opportunities for startups to demonstrate relevant solutions, receive practitioner feedback and explore potential use cases.</p></article>
+          <article class="detail-card"><div class="detail-no">PATHWAY 05</div><h3>Technology immersion</h3><p>Arrange demonstrations, site visits and guided learning experiences that connect concepts with the environments where technologies are applied.</p></article>
+          <article class="detail-card"><div class="detail-no">PATHWAY 06</div><h3>Innovation sprints</h3><p>Bring a mixed group together around a bounded challenge, with a clear brief, working session, review and documented next steps.</p></article>
+        </div>
+        <div class="collab-note"><strong>Designed around the partner—not a fixed package.</strong> Scope, participant mix, delivery format, timelines and commercial terms are agreed for each engagement before work begins.</div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="outcomes">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow">What good collaboration looks like</span>
+          <p class="big-quote">Move beyond attendance. Focus on <span style="color:#e8c982">useful next steps.</span></p>
+          <p style="color:#c5d0dc;max-width:490px;margin-top:22px">Not every interaction needs to become a large programme. A well-designed first engagement should create shared understanding, surface opportunities and make the next decision easier.</p>
+        </div>
+        <div class="outcome-grid">
+          <div class="outcome"><div class="outcome-mark">01</div><div><strong>Shared understanding</strong><span>A clearer view of the challenge, context and stakeholder needs.</span></div></div>
+          <div class="outcome"><div class="outcome-mark">02</div><div><strong>Relevant connections</strong><span>Introductions between people who have a practical reason to work together.</span></div></div>
+          <div class="outcome"><div class="outcome-mark">03</div><div><strong>Documented ideas</strong><span>Key insights, candidate approaches, project briefs or areas for further validation.</span></div></div>
+          <div class="outcome"><div class="outcome-mark">04</div><div><strong>Agreed next steps</strong><span>Owners, follow-up actions and a decision on whether to continue, refine or stop.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Who we bring together</span>
+          <h2>A stronger ecosystem starts with the right people in the room.</h2>
+          <p>Each stakeholder brings a different perspective. Our role is to help find the shared opportunity.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience"><div class="num">01 / STARTUPS</div><h3>Founders & Builders</h3><p>Explore industry connections, expert perspectives, talent engagement and opportunities to demonstrate solutions.</p></article>
+          <article class="audience"><div class="num">02 / INDUSTRY</div><h3>Businesses & Practitioners</h3><p>Engage with emerging ideas, academic expertise and collaborative approaches to real business challenges.</p></article>
+          <article class="audience"><div class="num">03 / ACADEMIA</div><h3>Colleges & Faculty</h3><p>Connect learning with industry practice through expert sessions, applied projects and curated experiences.</p></article>
+          <article class="audience"><div class="num">04 / LEARNERS</div><h3>Students & Professionals</h3><p>Gain exposure to practical contexts, different viewpoints and opportunities to learn by engaging.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="programs">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Ways to collaborate</span>
+          <h2>Start with a focused idea. Build something useful together.</h2>
+          <p>Programs can be designed around your objectives, audience and available resources. The examples below are potential formats, not a fixed catalogue.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program"><div class="program-art"><span class="art-symbol">◉</span></div><div class="program-body"><span class="tag">Founder engagement</span><h3>Founder Circles & Tech Talks</h3><p>Curated conversations with startup founders and practitioners around lessons learned, emerging technologies and real business challenges.</p><a href="#contact" data-interest="Founder circle or technology talk">Discuss this format ↗</a></div></article>
+          <article class="program"><div class="program-art"><span class="art-symbol">⌁</span></div><div class="program-body"><span class="tag">Applied collaboration</span><h3>Innovation Challenges</h3><p>Bring a clearly defined challenge to a cross-functional group and explore ideas, prototypes or student-supported projects.</p><a href="#contact" data-interest="Innovation challenge or applied project">Discuss this format ↗</a></div></article>
+          <article class="program"><div class="program-art"><span class="art-symbol">✳</span></div><div class="program-body"><span class="tag">Experiential learning</span><h3>Industry Immersion</h3><p>Design visits, demonstrations and reflective learning experiences that help participants understand how ideas and technologies work in practice.</p><a href="#contact" data-interest="Industry immersion or reflective journey">Discuss this format ↗</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our approach</span>
+          <h2>Simple enough to start. Structured enough to grow.</h2>
+          <p>We favour clear expectations, shared ownership and small pilots that create a basis for longer-term partnerships.</p>
+        </div>
+        <div class="process">
+          <article class="step"><div class="step-no">1</div><h3>Listen & understand</h3><p>Clarify the business need, learning goal or collaboration opportunity.</p></article>
+          <article class="step"><div class="step-no">2</div><h3>Connect the right people</h3><p>Identify relevant founders, practitioners, institutions and delivery partners.</p></article>
+          <article class="step"><div class="step-no">3</div><h3>Design a pilot</h3><p>Agree on the format, responsibilities, timeline and measures of value.</p></article>
+          <article class="step"><div class="step-no">4</div><h3>Learn & build forward</h3><p>Review outcomes and decide what is worth repeating or scaling.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="container">
+        <div class="feature-band">
+          <div><span class="eyebrow">An open invitation</span><h2>Have a challenge, an idea or a connection worth exploring?</h2><p>We welcome conversations with founders, academic leaders, industry practitioners and organisations interested in creating meaningful collaboration.</p><a class="btn btn-primary" href="#contact">Let's explore together <span>↗</span></a></div>
+          <div class="feature-stats">
+            <div class="stat"><strong>Connect</strong><span>People and perspectives</span></div>
+            <div class="stat"><strong>Co-create</strong><span>Ideas and opportunities</span></div>
+            <div class="stat"><strong>Experience</strong><span>Learning in real contexts</span></div>
+            <div class="stat"><strong>Build</strong><span>Practical next steps</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <span class="eyebrow">Start a conversation</span>
+          <h2>Let's make a useful connection.</h2>
+          <p>Tell us a little about your organisation and what you would like to explore. We can start with a conversation and identify a practical next step.</p>
+          <div class="contact-detail"><span>✉</span><div><strong>Partnership enquiries</strong><br/>Use the enquiry form to start a conversation.</div></div>
+          <div class="contact-detail"><span>↗</span><div><strong>Open to collaboration</strong><br/>Startups · Industry · Academia · Learning</div></div>
+        </div>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="field"><label for="name">Your name *</label><input id="name" name="name" required placeholder="Full name" autocomplete="name"/></div>
+            <div class="field"><label for="email">Work email *</label><input id="email" name="email" type="email" required placeholder="you@organisation.com" autocomplete="email"/></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="organisation">Organisation</label><input id="organisation" name="organisation" placeholder="Company or institution"/></div>
+            <div class="field"><label for="role">I am a...</label><select id="role" name="role"><option value="">Select one</option><option>Startup founder</option><option>Industry professional</option><option>Academic / faculty</option><option>College / institution representative</option><option>Student / learner</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label for="interest">What would you like to explore?</label><select id="interest" name="interest"><option value="">Choose an area</option><option>Industry–academia collaboration</option><option>Founder circle or technology talk</option><option>Innovation challenge or applied project</option><option>Industry immersion or reflective journey</option><option>Startup / industry partnership</option><option>Other collaboration</option></select></div>
+          <div class="field"><label for="message">Tell us a little more *</label><textarea id="message" name="message" required placeholder="What are you hoping to achieve?"></textarea></div>
+          <button class="btn btn-primary" type="submit" style="width:100%">Prepare enquiry <span>↗</span></button>
+          <p class="form-note">Prototype form: this page will prepare an email draft in your email application. Connect a form backend before publishing for live lead capture.</p>
+          <div class="form-success" id="formSuccess" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><div class="footer-brand">D GLOBAL COLLECTIVE</div><div class="copyright">Industry · Academia · Innovation</div></div>
+      <div class="footer-links"><a href="#about">About</a><a href="#focus">What we do</a><a href="#collaboration-pathways">Collaboration</a><a href="#programs">Programs</a><a href="#contact">Contact</a></div>
+      <div class="copyright">© <span id="year"></span> D Global Collective. All rights reserved.</div>
+    </div>
+  </footer>
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open'); menuToggle.setAttribute('aria-expanded','false'); menuToggle.textContent='☰';
+    }));
+    document.querySelectorAll('[data-interest]').forEach(link => link.addEventListener('click', () => {
+      document.getElementById('interest').value = link.dataset.interest.includes('Founder') ? 'Founder circle or technology talk' :
+        link.dataset.interest.includes('Innovation') ? 'Innovation challenge or applied project' : 'Industry immersion or reflective journey';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => { backTop.style.display = window.scrollY > 500 ? 'block' : 'none'; });
+    backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const name = form.get('name'), email = form.get('email'), org = form.get('organisation') || 'Not specified';
+      const role = form.get('role') || 'Not specified', interest = form.get('interest') || 'Not specified';
+      const message = form.get('message');
+      const subject = encodeURIComponent('D Global Collective enquiry — ' + interest);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nOrganisation: ${org}\nRole: ${role}\nInterest: ${interest}\n\nMessage:\n${message}`);
+      const success = document.getElementById('formSuccess');
+      success.style.display = 'block';
+      success.textContent = 'Your email draft is ready. Please choose or configure the official D Global Collective contact email in the website code before publishing.';
+      // Replace the placeholder below with the official enquiry email before launch.
+      const recipient = 'hello@example.com';
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
